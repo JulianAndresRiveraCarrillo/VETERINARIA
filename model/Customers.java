@@ -49,7 +49,7 @@ public class Customers{
 	}
 	/**
 	*this method has the function of asking for the id of the client.<br>
-	*
+	*@return the id of the client.<br>
 	*/
 	public String getID(){
 		return ID;
@@ -78,21 +78,47 @@ public class Customers{
 	public void setAddress(String newAddress){
 		address = newAddress;
 	}
+	/**
+	*this method ask for the phone number of the customer.<br>
+	*<b>pre:</b> the client exist in the systme.<br>
+	*@return the phone number of a specific client.<br>
+	*/
 	public String getPhoneNumber(){
 		return phoneNumber;
 	}
+	/**
+	*this method change a phone number or to assign a phone number.<br>
+	*<b>pos:</b> the new phone number is registred in the system.<br>
+	*@param newPhoneNumber has the phone number of the client.<br>
+	*/
 	public void setPhoneNumber(String newPhoneNumber){
 		phoneNumber = newPhoneNumber; 
 	}
+	/**
+	*this method get the pets of the arraylist.<br>
+	*<b>pre:</b> the ArrayList must be created.<br>
+	*@return all pets.<br>
+	*/
 	public ArrayList<Pets> getMascota(){
 		return mascota;
 	}
-	
+	/**
+	*this method report each client of the veterinary.<br>
+	*<b>pre:</b> there are client registred.<br>
+	*@return a list of all client.
+	*/
 	public String customers(){
 		String text="";
 		text+= "CLIENTE:" + name + "/n" + "IDENTIFICACION:" + ID + "/n" + "DIRECCION:" + address + "/n" + "NUMERO DE TELEFONO:" + phoneNumber;
 		return text;
 	}
+	/**
+	*this method has the function of looking for a pet from its name.<br>
+	*<b>pre:</b> the pet must be created.<br>
+	*<b>pos:</b> the pet is found.<br>
+	*@param name the name of the owner of the pet.<br>
+	*@return the pet that matches the name.<br>
+	*/
 	public Pets searchPet(String name){
 		Pets pt = null;
 		boolean encontro = false;
@@ -104,7 +130,20 @@ public class Customers{
 		}
 		return pt;
 	}
-	public String addPet(String id, String name, int age, double weight, double height, String animalRace, String symptoms, char type){
+	/**
+	*this method add to the system a pet with its owner.<br>
+	*<b>pre:</b> the pet is not registered.<br>
+	*<b>pos:</b> th pet is added to the system.<br>
+	*@param id is the id of the owner of the pet.<br>
+	*@param name the name of the pet.<br>
+	*@param age the age of the pet.<br>
+	*@param weight the weight of the pet.<br>
+	*@param height the height of the pet.<br>
+	*@param animalRace the breed of the pet.<br>
+	*@param type the type of animal of the pet.<br>
+	*@return a message if the pet is added or if the pet already exists.<br>
+	*/
+	public String addPet(String id, String name, int age, double weight, double height, String animalRace, char type){
 		String msg = "";
 		Pets pt = new Pets( name, age, weight, height, animalRace, type);
 		if(searchPet(name) !=null){
@@ -115,6 +154,13 @@ public class Customers{
 		}
 		return msg;
 	}
+	/**
+	*this method delete a pet of the system.<br>
+	<b>pre:</b> the pet is registred.<br>
+	<b>pos:</b> the pet is deleted of the system.<br>
+	*@param name the name of the pet that will delete.<br>
+	*@return a message if the pet is deleted or if the pet doesn´t exists.<br>
+	*/
 	public String deletePet(String name){
 		String ms = "";
 		if(searchPet(name) != null){
@@ -129,6 +175,12 @@ public class Customers{
 		}
 		return ms;
 	}
+	/**
+	*this method report all pets of the veterinary.<br>
+	*<b>pre:</b> there are pet registred.<br>
+	*<b>pos.</b> all Pets are shown on the screen.<br>
+	*@return a message with the list of pets.<br>
+	*/
 	public String reportPet(){
 		String msg = "";
 		for(int i = 0; i < mascota.size(); i++){
